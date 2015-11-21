@@ -42,13 +42,22 @@ for line in fhand:
 	 			s[i] = s[i][0] + scramble_text
 	 	
 	 	else:
-	 		# For words which have same punctuation at start and end
+
+	 		# For words which have same punctuation at start and end example = "'Program'"
 	 		if s[i][0] == s[i][-1] and s[i][0] in punc_list and s[i][-1] in punc_list:
 	 			scramble_text = list(s[i][2:len(s[i])-2])
 		 		shuffle(scramble_text)
 		 		scramble_text = "".join(scramble_text)
 		 		s[i] = s[i][:2] + scramble_text	+ s[i][-2:]
-		 	
+
+		 	# For words which have same punctuation at start and second last but with one more punctuation at end
+		 	# example = "'Program',"
+		 	elif s[i][0] == s[i][-2] and s[i][0] in punc_list and s[i][-1] in punc_list:
+		 		scramble_text = list(s[i][2:len(s[i])-3])
+		 		shuffle(scramble_text)
+		 		scramble_text = "".join(scramble_text)
+		 		s[i] = s[i][:2] + scramble_text	+ s[i][-3:]
+
 	 		else:
 		 			for item in punc_list:
 		 		
